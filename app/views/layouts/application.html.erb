@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Listing</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,900,300' rel='stylesheet' type='text/css'>
+  <%= csrf_meta_tags %>
+</head>
+<body id="overlay">
+
+
+<div class="container" ng-controller="propListCtrl">
+
+  <%= render 'layouts/header'%>
+
+
+
+<%= yield %>
+</div>
+
+
+</body>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+</html>

@@ -1,0 +1,1 @@
+json.extract! @list, :id, :id, :title, :address, :city, :zipcode, :country, :price, :bedrooms, :details, :agentName, :agencyName, :phone, :email, :geo_location, :bathrooms, :category, :region, :created_at, :updated_at

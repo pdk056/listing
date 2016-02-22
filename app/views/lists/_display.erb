@@ -1,0 +1,36 @@
+<div class="display_box">
+  <% @lists.each do|list| %>
+      <div class="box_container">
+
+        <div class="box_img">
+         <%= link_to image_tag("property_img/#{list.id}.jpg", :alt => 'Property'), list %>
+          <div class="info_title_price"> <%= list.price %></div>
+        </div>
+
+        <%= link_to ("#{list.title.gsub!(/[^0-9A-Za-z]/, '')} "), list, :class => 'box_title'%>
+
+        <div class="box_info">
+                    <div class="info">
+            <div class="info_title">Bedrooms : </div>
+            <div><%= list.bedrooms %></div>
+          </div>
+
+          <div class="info">
+            <div class="info_title">Bathrooms : </div>
+            <div><%= list.bathrooms %></div>
+          </div>
+
+          <div class="info">
+            <div class="info_title">City : </div>
+            <div><%= list.city %></div>
+          </div>
+
+        </div>
+      </div>
+
+  <% end %>
+</div>
+
+<%= js_will_paginate@lists ,:params => { :controller => 'lists', :action => 'index', _: nil, _method: nil, authenticity_token: nil, utf8: nil}%>
+<%#= will_paginate@lists ,:params => { :controller => 'lists', :action => 'index', _: nil, _method: nil, authenticity_token: nil, utf8: nil}%>
+<%#= will_paginate@lists , :remote => true%>

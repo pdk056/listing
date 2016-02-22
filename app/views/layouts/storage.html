@@ -1,0 +1,214 @@
+<!--<table>-->
+<!--<thead>-->
+<!--<tr>-->
+<!--<th>Title</th>-->
+<!--<th>City</th>-->
+<!--<th>Price</th>-->
+<!--<th>Bedrooms</th>-->
+<!--<th>Details</th>-->
+<!--<th>category</th>-->
+<!--<th>Region</th>-->
+<!--<th colspan="3"></th>-->
+<!--</tr>-->
+<!--</thead>-->
+
+<!--<tbody>-->
+<!--<% @lists.each do |list| %>-->
+<!--<tr>-->
+<!--<td><%= link_to list.title, list%></td>-->
+<!--<td><%= list.city %></td>-->
+<!--<td><%= list.price %></td>-->
+<!--<td><%= list.bedrooms %></td>-->
+<!--<td><%= list.details %></td>-->
+<!--<td><%= list.category %></td>-->
+<!--<td><%= list.region %></td>-->
+<!--&lt;!&ndash;<td><%= link_to 'Show', list %></td>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <td><%= link_to 'Edit', edit_list_path(list) %></td>-->
+<!--<td><%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>&ndash;&gt;-->
+<!--</tr>-->
+<!--<% end %>-->
+<!--</tbody>-->
+<!--</table>-->
+
+# @displayLists= List.select("title","price", "bedrooms", "category", "region", "city", "id")
+# respond_to do|format|
+#   format.html
+#   format.json { render json:@displayLists}
+#   # format.json do
+#   #   render :json => customList(@lists)
+#   # end
+
+
+
+
+<%= form_tag lists_path, :method => 'get' do %>
+<%= text_field_tag :search, params[:search]%>
+<%= range_field(:list, :discount, in: 1..100,:'ng-model'=> 'range') %>
+<%= submit_tag "search" %>
+<%end %>
+{{range}}
+
+
+
+
+<% @lists.each do|list| %>
+<div class="box_container">
+    <div class="box_title"><%= link_to list.title.gsub!(/[^0-9A-Za-z]/, ''), list%></div>
+    <div class="box_img"><%= image_tag("property_img/#{list.id}.jpg", :alt => 'Property') %></div>
+    <div class="box_info">
+        <div class="info">
+            <div class="info_title"> Price </div>
+            <div><%= list.price %></div>
+        </div>
+        <div class="info">
+            <div class="info_title">BHK</div>
+            <div><%= list.bedrooms %></div>
+        </div>
+        <div class="info">
+            <div class="info_title">City</div>
+            <div><%= list.city %></div>
+        </div>
+    </div>
+</div>
+<% end%>
+</div>
+<%= link_to 'New List', new_list_path %>
+
+
+
+
+
+
+<div class="display_box">
+    <div class="box_container" ng-repeat="propList in displayLists | filter:query">
+
+        <div class="box_title">  <%= link_to'{{propList.title}}', lists_path%></div>
+        <!--<div class="box_title">{{propList.title}}</div>-->
+        <div class="box_img">
+            <%= image_tag('property_img/{{propList.id}}.jpg', :alt => 'Property') %>
+        </div>
+        <div class="box_info">
+            <div class="info">
+                <div class="info_title"> Price</div>
+                <div>{{propList.price}}</div>
+            </div>
+            <div class="info">
+                <div class="info_title">BHK</div>
+                <div>{{propList.bedrooms}}</div>
+            </div>
+            <div class="info">
+                <div class="info_title">City</div>
+                <div>{{propList.city}}</div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!----------------------------------------------- Show----------------------------- -->
+<p>
+    <strong>Id:</strong>
+    <%= @list.id %>
+</p>
+
+<p>
+    <strong>Title:</strong>
+    <%= @list.title %>
+</p>
+
+<p>
+    <strong>Address:</strong>
+    <%= @list.address %>
+</p>
+
+<p>
+    <strong>City:</strong>
+    <%= @list.city %>
+</p>
+
+<p>
+    <strong>Zipcode:</strong>
+    <%= @list.zipcode %>
+</p>
+
+<p>
+    <strong>Country:</strong>
+    <%= @list.country %>
+</p>
+
+<p>
+    <strong>Price:</strong>
+    <%= @list.price %>
+</p>
+
+<p>
+    <strong>Bedrooms:</strong>
+    <%= @list.bedrooms %>
+</p>
+
+<p>
+    <strong>Details:</strong>
+    <%= @list.details %>
+</p>
+
+<p>
+    <strong>Agentname:</strong>
+    <%= @list.agentName %>
+</p>
+
+<p>
+    <strong>Agencyname:</strong>
+    <%= @list.agencyName %>
+</p>
+
+<p>
+    <strong>Phone:</strong>
+    <%= @list.phone %>
+</p>
+
+<p>
+    <strong>Email:</strong>
+    <%= @list.email %>
+</p>
+
+<p>
+    <strong>Geo location:</strong>
+    <%= @list.geo_location %>
+</p>
+
+<p>
+    <strong>Bathrooms:</strong>
+    <%= @list.bathrooms %>
+</p>
+
+<p>
+    <strong>category:</strong>
+    <%= @list.category %>
+</p>
+<p>
+    <strong>Region:</strong>
+    <%= @list.region %>
+</p>
+
+<%= link_to 'Edit', edit_list_path(@list) %> |
+<%= link_to 'Back', lists_path %>
+
+
+
+
+
+
+//var input = $( "input:reset" ).css({
+//    background: "yellow",
+//    border: "3px red solid"
+//});
+
+$('#property_search .close').on('click', function(){
+alert('sd');
+});
+//$( '#property_search' ).each(function(){
+//    this.reset();
+//});

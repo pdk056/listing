@@ -1,0 +1,31 @@
+<div class="excerpt_container">
+  <div id="bg_pattern"></div>
+  <div class="excerpt_img">
+    <%= image_tag("property_img/#{@list.id}.jpg", :alt => 'Property') %>
+  </div>
+
+  <div class="excerpt_details">
+    <div class="title"> <h1><%= @list.title %></h1></div>
+
+    <table>
+      <tr> <td><strong>Type</strong> </td>
+          <td > <%= @list.category %></td>
+      </tr>
+      <tr> <td > <strong> No. of Bedrooms: </strong></td>
+        <td><%= @list.bedrooms %></td>
+      </tr>
+      <tr>        <td >
+         <strong>Address:</strong>
+        </td>
+        <td>
+          <%= @list.address %> <br> <%= @list.city %> <br><%= @list.zipcode %>
+        </td>
+      </tr>
+      <tr> <td > <strong> Locality </strong></td>
+        <td><%= @list.region %></td>
+      </tr>
+    </table>
+    <div class="price"><h1>Best Price: <%= @list.price %></h1></div>
+  </div>
+
+</div>
